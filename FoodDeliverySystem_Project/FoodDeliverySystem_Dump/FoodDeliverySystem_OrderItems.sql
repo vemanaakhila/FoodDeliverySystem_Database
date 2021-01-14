@@ -1,0 +1,58 @@
+CREATE DATABASE  IF NOT EXISTS `FoodDeliverySystem` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `FoodDeliverySystem`;
+-- MySQL dump 10.13  Distrib 8.0.17, for macos10.14 (x86_64)
+--
+-- Host: 127.0.0.1    Database: FoodDeliverySystem
+-- ------------------------------------------------------
+-- Server version	8.0.17
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `OrderItems`
+--
+
+DROP TABLE IF EXISTS `OrderItems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `OrderItems` (
+  `OrderItemsMappingId` int(11) NOT NULL AUTO_INCREMENT,
+  `OrderId` int(11) NOT NULL,
+  `ItemRestaurantMappingId` int(11) NOT NULL,
+  PRIMARY KEY (`OrderItemsMappingId`),
+  KEY `FK_OI_Order_idx` (`OrderId`),
+  KEY `FK_OI_IRM_idx` (`ItemRestaurantMappingId`),
+  CONSTRAINT `FK_OI_IRM` FOREIGN KEY (`ItemRestaurantMappingId`) REFERENCES `itemrestaurantmapping` (`ItemRestaurantMappingId`),
+  CONSTRAINT `FK_OI_Order` FOREIGN KEY (`OrderId`) REFERENCES `order` (`OrderId`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OrderItems`
+--
+
+LOCK TABLES `OrderItems` WRITE;
+/*!40000 ALTER TABLE `OrderItems` DISABLE KEYS */;
+INSERT INTO `OrderItems` VALUES (1,34,54),(2,88,15),(3,23,60),(4,19,65),(5,65,78),(6,60,58),(7,32,90),(8,18,33),(9,42,36),(10,74,83),(11,17,65),(12,34,70),(13,36,52),(14,91,5),(15,29,51),(16,11,42),(17,66,19),(18,43,84),(19,81,80),(20,85,58),(21,10,67),(22,16,35),(23,50,27),(24,94,81),(25,81,57),(26,69,62),(27,74,10),(28,44,46),(29,47,89),(30,42,69),(31,37,21),(32,16,22),(33,65,15),(34,19,42),(35,53,96),(36,40,49),(37,14,32),(38,54,42),(39,42,72),(40,24,94),(41,77,76),(42,20,31),(43,62,76),(44,15,1),(45,75,69),(46,3,63),(47,83,56),(48,96,17),(49,79,66),(50,30,98),(51,9,39),(52,65,38),(53,6,3),(54,47,60),(55,72,32),(56,59,52),(57,62,99),(58,47,50),(59,73,50),(60,32,25),(61,78,45),(62,35,100),(63,80,72),(64,53,34),(65,35,89),(66,22,36),(67,87,88),(68,36,90),(69,42,7),(70,22,26),(71,67,63),(72,12,40),(73,88,38),(74,41,83),(75,94,32),(76,77,52),(77,19,29),(78,89,25),(79,99,14),(80,33,36),(81,49,46),(82,18,91),(83,81,66),(84,31,37),(85,68,85),(86,47,53),(87,65,100),(88,70,99),(89,86,43),(90,14,38),(91,12,7),(92,34,95),(93,74,12),(94,9,25),(95,28,63),(96,22,96),(97,58,36),(98,44,74),(99,6,28),(100,39,98);
+/*!40000 ALTER TABLE `OrderItems` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-12-08 23:23:53
